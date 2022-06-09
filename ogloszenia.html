@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styl5.css">
+    <title>Portal ogłoszeniowy</title>
+</head>
+<body>
+    <div class="banner">
+        <h1>Portal Ogłoszeniowy</h1>
+    </div>
+
+    <div class="flex">
+    <div class="info">
+        <img src="logo-male.png" alt="">
+    </div>
+    <div class="info">
+        <h3>Adres</h3>
+        <p>ul. Morska 45 Gdynia</p>
+    </div>
+    <div class="info">
+        <h3>telefon</h3>
+        <p>601601601</p>
+    </div>
+    <div class="info">
+        <h3>email</h3>
+        <p>ogloszenia@poczta.pl</p>
+    </div>
+</div>
+<div class="flex">
+    <div class="left">
+        <h2>Ceny ogłoszeń</h2>
+        <table>
+			<tr>
+				<td>Liczba ogłoszeń</td>
+				<td>Cena ogłoszenia</td>
+				<td>Bonus</td>
+			</tr>
+			<tr>
+				<td>1-50</td>
+				<td>2 PLN</td>
+				<td rowspan="2">Subskrypcja newslettera to upust 0,20 PLN na ogłoszenie</td>
+			</tr>
+			<tr>
+				<td>51 i więcej</td>
+				<td>1 PLN</td>
+			</tr>
+		</table>
+    </div>
+
+    <div class="middle">
+        <h2>Witamy na stronie naszego portalu!</h2>
+        <img src="logo-duze.png" alt="ogłoszenia">
+    </div>
+
+    <div class="right">
+        <h2>Ile kosztuje ogłoszenie?</h2><br>
+        Podaj liczbę ogłoszeń:<br> <input id="amount" type="number"><br>
+        <input id="discount" type="checkbox" > policz upust na newsletter <br>
+        <button onclick="obliczanie()">Oblicz</button>
+        <p id="wynik"></p>
+    </div>
+</div>
+
+    <div class="footer">
+        Portal ogłoszeniowy wykonał 00000000000
+    </div>
+
+    <script type="text/Javascript">
+        function obliczanie() {
+            let amount = document.querySelector("#amount").value;
+            let price = (amount * 2) - (2 * 0.1 * amount);
+            let price1 = (1 * 0.1 * amount);
+            let checkbox = document.querySelector("#discount");
+
+
+            if (amount >= 1 && amount <= 50 && checkbox.checked == false) {
+                document.querySelector("#wynik").textContent = "koszt ogłoszeń " + price + " PLN"
+            } else if (amount >= 1 && amount <= 50 && checkbox.checked == true) {
+                document.querySelector("#wynik").textContent = "koszt ogłoszeń " + price + " PLN"
+            } else if (amount >= 51 && checkbox.checked == false) {
+                document.querySelector("wynik").textContent = "koszt ogłoszeń " + price1 + " PLN"
+            } else if (amount >= 51 && checkbox.checked == true) {
+                document.querySelector("wynik").textContent = "koszt ogłoszeń " + price1 + " PLN"
+            }
+        }
+    </script>
+</body>
+</html>
